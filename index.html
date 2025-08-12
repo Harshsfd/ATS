@@ -3,478 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Awesome Company - ATS Resume Score Checker & Chatbot</title>
-  <meta name="description" content="Modern stylish website with responsive navbar, chatbot, and ATS Resume Score Checker tool." />
+  <title>Awesome Company - Modern UI with Chatbot & ATS Checker</title>
+  <meta name="description" content="Stylish website with chatbot and Resume ATS checker. Responsive and ATS-friendly." />
   <meta name="robots" content="index, follow" />
-  
+  
   <!-- Font Awesome Icons CDN -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-pap4J4+3soV+g+gyD+MgwL7UVnpw9hBfKf7BFlQqSo6nG1BhwCN6TJc7aVwhP1RYWqd9Wz5F3sZgZxdYtW+MBg=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
-
-  <style>
-    /* Reset & base */
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
-      background: #f0f4ff;
-      color: #222;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    a {
-      color: #004080;
-      text-decoration: none;
-    }
-    a:hover, a:focus {
-      text-decoration: underline;
-    }
-    button {
-      font-family: inherit;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Navbar */
-    nav {
-      background: #004080;
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 10001;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.15);
-    }
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 60px;
-    }
-    nav .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 1.3px;
-      cursor: pointer;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-    }
-    nav ul li {
-      position: relative;
-    }
-    nav ul li a {
-      color: white;
-      font-weight: 600;
-      padding: 10px 0;
-      display: inline-block;
-      transition: color 0.3s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a:focus {
-      color: #ffcc00;
-    }
-    nav ul li a.active {
-      color: #ffcc00;
-      border-bottom: 2px solid #ffcc00;
-    }
-
-    /* Hamburger menu for mobile */
-    #menu-toggle {
-      display: none;
-    }
-    .menu-icon {
-      display: none;
-      cursor: pointer;
-      font-size: 1.8rem;
-    }
-
-    /* Hero Section */
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 30px;
-      padding: 60px 0 40px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .hero-text {
-      flex: 1 1 400px;
-    }
-    .hero-text h2 {
-      font-size: 2.4rem;
-      margin-bottom: 20px;
-      color: #004080;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .hero-text p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #444;
-    }
-    .hero-text a.btn-primary {
-      display: inline-block;
-      background: #004080;
-      color: white;
-      padding: 14px 32px;
-      border-radius: 6px;
-      font-weight: 700;
-      box-shadow: 0 5px 12px rgba(0,64,128,0.5);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .hero-text a.btn-primary:hover,
-    .hero-text a.btn-primary:focus {
-      background: #00294d;
-      outline: none;
-      transform: scale(1.05);
-    }
-    .hero-image {
-      flex: 1 1 400px;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
-    .hero-image img {
-      border-radius: 14px;
-      transition: transform 0.35s ease;
-    }
-    .hero-image img:hover {
-      transform: scale(1.06);
-    }
-
-    /* Features Section */
-    .features {
-      margin: 60px 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 40px;
-    }
-    .feature-item {
-      background: white;
-      padding: 32px 24px;
-      border-radius: 14px;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.08);
-      text-align: center;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-    }
-    .feature-item:hover,
-    .feature-item:focus-within {
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-      transform: translateY(-6px);
-    }
-    .feature-item i {
-      font-size: 3.8rem;
-      color: #004080;
-      margin-bottom: 18px;
-      filter: drop-shadow(0 0 2px rgba(0,64,128,0.4));
-    }
-    .feature-item h3 {
-      margin-bottom: 14px;
-      font-size: 1.4rem;
-      color: #00294d;
-    }
-    .feature-item p {
-      color: #555;
-      font-size: 1.05rem;
-      line-height: 1.5;
-    }
-
-    /* ATS Score Checker Section */
-    #ats-checker {
-      background: white;
-      padding: 50px 30px;
-      border-radius: 14px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-      margin-bottom: 60px;
-    }
-    #ats-checker h2 {
-      color: #004080;
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    #ats-checker p {
-      color: #444;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 40px auto;
-      text-align: center;
-    }
-    #ats-form {
-      max-width: 500px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    #ats-form input[type="file"] {
-      padding: 10px;
-      border-radius: 8px;
-      border: 2px solid #ccc;
-      transition: border-color 0.3s ease;
-      cursor: pointer;
-    }
-    #ats-form input[type="file"]:hover,
-    #ats-form input[type="file"]:focus {
-      border-color: #004080;
-      outline: none;
-    }
-    #ats-form button {
-      background: #004080;
-      color: white;
-      font-weight: 700;
-      border: none;
-      padding: 14px 0;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      box-shadow: 0 6px 15px rgba(0,64,128,0.6);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    #ats-form button:hover,
-    #ats-form button:focus {
-      background: #00294d;
-      outline: none;
-      transform: scale(1.05);
-    }
-    #ats-result {
-      margin-top: 30px;
-      background: #e9f1ff;
-      border-radius: 10px;
-      padding: 25px;
-      font-size: 1.15rem;
-      color: #004080;
-      text-align: center;
-      box-shadow: inset 0 0 10px rgba(0,64,128,0.1);
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 35px 15px;
-      background: #00294d;
-      color: white;
-      font-size: 0.95rem;
-      margin-top: 80px;
-    }
-
-    /* Chatbot Styles */
-    #chatbot {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 350px;
-      max-width: 90vw;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: white;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform: translateY(100%);
-      opacity: 0;
-      z-index: 9999;
-    }
-    #chatbot.open {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    #chatbot header {
-      background: #004080;
-      color: white;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
-    #chatbot header button {
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-      line-height: 1;
-    }
-
-    #chatbot .chat-body {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      background: #f9f9f9;
-    }
-    #chatbot .chat-message {
-      margin-bottom: 15px;
-      max-width: 80%;
-      padding: 10px 15px;
-      border-radius: 20px;
-      font-size: 0.95rem;
-      line-height: 1.3;
-      word-wrap: break-word;
-    }
-    #chatbot .chat-message.user {
-      background: #004080;
-      color: white;
-      margin-left: auto;
-      border-bottom-right-radius: 4px;
-    }
-    #chatbot .chat-message.bot {
-      background: #e1e8ff;
-      color: #004080;
-      border-bottom-left-radius: 4px;
-    }
-
-    #chatbot footer {
-      padding: 15px 20px;
-      background: #eee;
-      display: flex;
-      gap: 10px;
-    }
-    #chatbot footer input[type="text"] {
-      flex: 1;
-      padding: 10px 15px;
-      border-radius: 25px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    #chatbot footer input[type="text"]:focus {
-      border-color: #004080;
-    }
-    #chatbot footer button {
-      background: #004080;
-      border: none;
-      color: white;
-      padding: 0 20px;
-      border-radius: 25px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    #chatbot footer button:hover {
-      background: #00294d;
-    }
-
-    /* Chatbot toggle button */
-    #chatbot-toggle {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #004080;
-      border: none;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.8rem;
-      box-shadow: 0 8px 20px rgba(0,64,128,0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      transition: background-color 0.3s ease;
-    }
-    #chatbot-toggle:hover {
-      background: #00294d;
-    }
-
-    /* Responsive */
-    @media (max-width: 960px) {
-      .hero {
-        flex-direction: column;
-        text-align: center;
-      }
-      .hero-text, .hero-image {
-        flex: none;
-      }
-      #chatbot {
-        width: 95vw;
-        bottom: 20px;
-        right: 50%;
-        transform: translate(50%, 100%);
-      }
-      #chatbot.open {
-        transform: translate(50%, 0);
-      }
-      #chatbot-toggle {
-        right: 50%;
-        transform: translateX(50%);
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav .container {
-        height: auto;
-        flex-wrap: wrap;
-        padding: 10px 20px;
-      }
-      nav ul {
-        flex-direction: column;
-        width: 100%;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-      }
-      nav ul.open {
-        max-height: 300px;
-      }
-      nav ul li {
-        margin: 12px 0;
-      }
-      #menu-toggle:checked + .menu-icon + ul {
-        max-height: 300px;
-      }
-      #menu-toggle {
-        display: block;
-      }
-      .menu-icon {
-        display: block;
-        color: white;
-        margin-left: auto;
-      }
-    }
-  </style>
+  
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- Navbar -->
   <nav role="navigation" aria-label="Primary Navigation">
-    <div class="container">
-      <div class="logo" tabindex="0">Awesome Company</div>
-
-      <input type="checkbox" id="menu-toggle" aria-label="Toggle menu" />
-      <label for="menu-toggle" class="menu-icon" aria-hidden="true">
-        <i class="fas fa-bars"></i>
+    <div class="container nav-container">
+      <a href="#" class="logo" aria-label="Awesome Company Home">Awesome Company</a>
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle navigation menu" />
+      <label for="menu-toggle" class="hamburger" aria-hidden="true">
+        <span></span><span></span><span></span>
       </label>
-
-      <ul id="nav-menu">
+      <ul class="nav-links">
         <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#ats-checker">ATS Checker</a></li>
@@ -483,22 +37,21 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <main role="main" class="container">
-    <section class="hero" id="hero" aria-label="Introduction">
-      <div class="hero-text">
-        <h2>Welcome to Our Modern Website</h2>
-        <p>
-          We deliver cutting-edge solutions with style and simplicity. Explore our services, learn more about our mission, and start your journey with us today.
-        </p>
-        <a href="#features" class="btn-primary" role="button">Explore Features</a>
-      </div>
-      <div class="hero-image" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Abstract tech design" />
-      </div>
-    </section>
+  <header role="banner" id="hero" class="container hero">
+    <div class="hero-text">
+      <h1>Welcome to Our Modern Website</h1>
+      <p>
+        We deliver cutting-edge solutions with style and simplicity. Explore our services, learn more about our mission, and start your journey with us today.
+      </p>
+      <a href="#features" class="btn-primary" role="button">Explore Features</a>
+    </div>
+    <div class="hero-image" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Abstract tech design" />
+    </div>
+  </header>
 
-    <!-- Features Section -->
+  <main class="container">
+
     <section class="features" id="features" aria-label="Website Features">
       <article class="feature-item" tabindex="0">
         <i class="fas fa-bolt" aria-hidden="true"></i>
@@ -522,7 +75,6 @@
       </article>
     </section>
 
-    <!-- ATS Resume Score Checker Section -->
     <section id="ats-checker" aria-label="Resume ATS Score Checker">
       <h2>Resume ATS Score Checker</h2>
       <p>Upload your resume in PDF or DOCX format, and get an instant ATS compatibility score along with tips to improve it.</p>
@@ -533,8 +85,7 @@
       <div id="ats-result" role="region" aria-live="polite" aria-atomic="true" tabindex="0" hidden></div>
     </section>
 
-    <!-- Contact placeholder for navbar link -->
-    <section id="contact" aria-label="Contact Information" style="margin-bottom: 80px; text-align:center;">
+    <section id="contact" aria-label="Contact Information">
       <h2>Contact Us</h2>
       <p>
         Have questions? Reach out to us at <a href="mailto:info@awesomecompany.com">info@awesomecompany.com</a> or call us at <a href="tel:+1234567890">+1 (234) 567-890</a>.
@@ -570,125 +121,7 @@
     <i class="fas fa-comments"></i>
   </button>
 
-  <script>
-    // Chatbot logic
-    const chatbot = document.getElementById('chatbot');
-    const toggleBtn = document.getElementById('chatbot-toggle');
-    const closeBtn = document.getElementById('chatbot-close');
-    const sendBtn = document.getElementById('chatbot-send');
-    const input = document.getElementById('chatbot-input');
-    const messages = document.getElementById('chatbot-messages');
-
-    function appendMessage(message, sender = 'bot') {
-      const msgDiv = document.createElement('div');
-      msgDiv.classList.add('chat-message', sender);
-      msgDiv.textContent = message;
-      messages.appendChild(msgDiv);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function botResponse(userText) {
-      userText = userText.toLowerCase();
-
-      if (userText.includes('hello') || userText.includes('hi')) {
-        return 'Hello! How can I assist you today?';
-      }
-      if (userText.includes('services')) {
-        return 'We offer web development, mobile apps, and AI chatbot solutions.';
-      }
-      if (userText.includes('price') || userText.includes('cost')) {
-        return 'Our pricing varies by project scope. Please contact us for a custom quote.';
-      }
-      if (userText.includes('bye') || userText.includes('thank')) {
-        return 'Thank you for chatting with us! Have a great day!';
-      }
-      return "Sorry, I didn't quite get that. Could you please rephrase?";
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      chatbot.classList.add('open');
-      chatbot.setAttribute('aria-hidden', 'false');
-      input.focus();
-      toggleBtn.style.display = 'none';
-    });
-
-    closeBtn.addEventListener('click', () => {
-      chatbot.classList.remove('open');
-      chatbot.setAttribute('aria-hidden', 'true');
-      toggleBtn.style.display = 'flex';
-      toggleBtn.focus();
-    });
-
-    sendBtn.addEventListener('click', sendMessage);
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-
-    function sendMessage() {
-      const userText = input.value.trim();
-      if (!userText) return;
-      appendMessage(userText, 'user');
-      input.value = '';
-      
-      setTimeout(() => {
-        const reply = botResponse(userText);
-        appendMessage(reply, 'bot');
-      }, 600);
-    }
-
-    // ATS Resume Score Checker logic (Demo only)
-    const atsForm = document.getElementById('ats-form');
-    const atsResult = document.getElementById('ats-result');
-    const resumeInput = document.getElementById('resume-upload');
-
-    atsForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const file = resumeInput.files[0];
-      if (!file) {
-        alert('Please upload your resume file first.');
-        return;
-      }
-
-      // Simulated ATS scoring logic (replace with real processing or API)
-      atsResult.hidden = false;
-      atsResult.textContent = 'Analyzing your resume...';
-
-      // Simulate analysis delay
-      setTimeout(() => {
-        // Generate a random score for demo
-        const score = Math.floor(Math.random() * 41) + 60; // 60 to 100
-        let message = `Your resume ATS compatibility score is <strong>${score}%</strong>. `;
-
-        if (score >= 85) {
-          message += 'Excellent! Your resume is well optimized for ATS.';
-        } else if (score >= 70) {
-          message += 'Good, but consider improving keyword usage and formatting.';
-        } else {
-          message += 'Your resume may struggle with ATS. Consider revising content and format.';
-        }
-
-        atsResult.innerHTML = message;
-        atsResult.focus();
-      }, 1500);
-    });
-
-    // Smooth scroll for nav links and active link highlighting
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        e.target.classList.add('active');
-        // For mobile menu, close menu after click
-        const menuToggle = document.getElementById('menu-toggle');
-        if (menuToggle.checked) {
-          menuToggle.checked = false;
-        }
-      });
-    });
-  </script>
-
+  <!-- Link JS -->
+  <script src="script.js"></script>
 </body>
 </html>
